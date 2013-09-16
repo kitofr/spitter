@@ -1,10 +1,11 @@
 (ns spitter.core
-  (:use compojure.core)
+  (:use compojure.core
+        spitter.views)
   (:require [compojure.handler :as handler]
             [compojure.route :as route]))
 
 (defroutes app-routes
-  (GET "/" [] "<p>Hello from compojure</p>")
+  (GET "/" [] (index-page))
 
   (route/resources "/")
   (route/not-found "404 - Page not found"))

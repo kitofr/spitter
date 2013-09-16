@@ -7,7 +7,8 @@
   :source-paths ["src/clj"]
   :dependencies [[org.clojure/clojure "1.5.1"]
                  [org.clojure/clojurescript "0.0-1878"]
-                 [compojure "1.1.5"]]
+                 [compojure "1.1.5"]
+                 [hiccup "1.0.0"]]
 
   :plugins [[lein-cljsbuild "0.3.3"]
             [lein-ring "0.8.7"]]
