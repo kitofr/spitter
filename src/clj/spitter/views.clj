@@ -9,5 +9,12 @@
      [:link { :href "http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" :rel "stylesheet" }]
      (include-css "/css/style.css")]
     [:body
-     [:div
-     [:h1 "Spitter!"]]]))
+     [:div.container
+      [:div.jumbotron
+       [:h1 "Spitter!"]
+       [:p "Read your twitter stream in blasing speed!"]
+       [:input.form-control.input-lg { :type "textarea" :placeholder "Your twitter stream" :style "width: 400px" }]
+       [:button.btn.btn-success "Play!"]]]
+     [:script { :src "http://code.jquery.com/jquery.js" }]
+     [:script { :src "http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js" }]]))
+                                      
