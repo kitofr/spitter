@@ -27,14 +27,21 @@
                          (fn []
                            (if (not= "" @current)
                              (swap! current read-words))))
-        stop (by-id "stop")]
-    (set! (.-onclick stop) (fn [] (clear-interval id)))))
+        stop-btn (by-id "stop")]
+    (set! (.-onclick stop-btn) (fn [] (clear-interval id)))))
+
+(defn reset []
+  (reset! current lein-vs-ants)
+  (set-value! (by-id "stream") (next-word @current)))
 
 (defn init []
   (let [stream (by-id "stream")
-        play (by-id "play") ]
-    (set-value! stream (next-word lein-vs-ants))
-    (set! (.-onclick play) start)
+        play-btn (by-id "play") 
+        reset-btn (by-id "reset") 
+        ]
+    (set-value! stream (next-word @current))
+    (set! (.-onclick play-btn) start)
+    (set! (.-onclick reset-btn) reset)
     (log (str "Current: " @current))))
 
 (set! (.-onload js/window) init)
