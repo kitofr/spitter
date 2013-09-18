@@ -9,6 +9,9 @@
 (defn clear-interval [id]
   (js/clearInterval id))
 
+(defn log [text]
+  (.log js/console text))
+
 (defn next-word [text]
   (join " " (take 1 (split text #"\s"))))
 
@@ -32,7 +35,7 @@
         play (by-id "play") ]
     (set-value! stream (next-word lein-vs-ants))
     (set! (.-onclick play) start)
-    (.log js/console (str "Current: " @current))))
+    (log (str "Current: " @current))))
 
 (set! (.-onload js/window) init)
 
