@@ -20,22 +20,16 @@
     tail))
 
 (defn start []
-  (letfn [(halt [id] 
-            (clear-interval id))]
-    (let [id (set-interval 300 
-                           (fn []
-                             (if (not= "" @current)
-                               (do 
-                                 (swap! current read-words))
-                               (halt id))))
-          stop (by-id "stop")]
-      (set! (.-onclick stop) (fn [] (halt id)))
-      )))
+  (let [id (set-interval 300 
+                         (fn []
+                           (if (not= "" @current)
+                             (swap! current read-words))))
+        stop (by-id "stop")]
+    (set! (.-onclick stop) (fn [] (clear-interval id)))))
 
 (defn init []
   (let [stream (by-id "stream")
-        play (by-id "play")
-        stop (by-id "stop")]
+        play (by-id "play") ]
     (set-value! stream (next-word lein-vs-ants))
     (set! (.-onclick play) start)
     (.log js/console (str "Current: " @current))))
