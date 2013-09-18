@@ -1,7 +1,7 @@
 (ns spitter-cljs.app
   (:use [cljs.core :only [swap!]]
         [clojure.string :only [split join]]
-        [domina :only [by-id value set-value!]]))
+        [domina :only [by-id value set-value! append!]]))
   
 (defn set-interval [delay f]
   (js/setInterval f delay))
@@ -34,15 +34,19 @@
   (reset! current lein-vs-ants)
   (set-value! (by-id "stream") (next-word @current)))
 
-(defn init []
-  (let [stream (by-id "stream")
-        play-btn (by-id "play") 
-        reset-btn (by-id "reset") 
-        ]
-    (set-value! stream (next-word @current))
+(defn setup-button-events []
+  (let [play-btn (by-id "play") 
+        reset-btn (by-id "reset")]
     (set! (.-onclick play-btn) start)
-    (set! (.-onclick reset-btn) reset)
-    (log (str "Current: " @current))))
+    (set! (.-onclick reset-btn) reset)))
+
+(defn create-velocity-buttons [buttons]
+  (let [div (by-id "speed")]
+    (map log buttons)))
+
+(defn init []
+  (setup-button-events)
+  (create-velocity-buttons [300, 400, 500, 600]))
 
 (set! (.-onload js/window) init)
 

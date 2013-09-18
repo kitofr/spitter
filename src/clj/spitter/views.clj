@@ -15,10 +15,10 @@
        [:p "Read your twitter stream in blasing speed!"]
        [:input#stream.form-control.input-lg { :type "textarea" :placeholder "Your twitter stream" :style "width: 400px" }]
        [:div.btn-group
-       [:button#play.btn.btn-success "Play!"]
-       [:button#stop.btn.btn-inverse "Stop"]
-       [:button#reset.btn.btn-inverse "Reset"]
-       ]]]
+        [:button#play.btn.btn-success "Play!"]
+        [:button#stop.btn.btn-inverse "Stop"]
+        [:button#reset.btn.btn-inverse "Reset"]]
+       [:div#speed]]]
      [:script { :src "/js/spitter.js" }]
      [:script { :src "http://code.jquery.com/jquery.js" }]
      [:script { :src "http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js" }]]))
