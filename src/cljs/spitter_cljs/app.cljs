@@ -1,7 +1,8 @@
 (ns spitter-cljs.app
+  (:require [domina :as d]
+            [domina.css :as css])
   (:use [cljs.core :only [swap!]]
-        [clojure.string :only [split join]]
-        [domina :only [by-id value set-value! append!]]))
+        [clojure.string :only [split join]]))
   
 (defn set-interval [delay f]
   (js/setInterval f delay))
@@ -18,8 +19,8 @@
 (defn read-words [words]
   (let [word (next-word words)
         tail (join " " (rest (split words #"\s")))
-        stream (by-id "stream")]
-    (set-value! stream word)
+        stream (d/by-id "stream")]
+    (d/set-value! stream word)
     tail))
 
 (defn start []
@@ -27,21 +28,21 @@
                          (fn []
                            (if (not= "" @current)
                              (swap! current read-words))))
-        stop-btn (by-id "stop")]
+        stop-btn (d/by-id "stop")]
     (set! (.-onclick stop-btn) (fn [] (clear-interval id)))))
 
 (defn reset []
   (reset! current lein-vs-ants)
-  (set-value! (by-id "stream") (next-word @current)))
+  (d/set-value! (d/by-id "stream") (next-word @current)))
 
 (defn setup-button-events []
-  (let [play-btn (by-id "play") 
-        reset-btn (by-id "reset")]
+  (let [play-btn (d/by-id "play") 
+        reset-btn (d/by-id "reset")]
     (set! (.-onclick play-btn) start)
     (set! (.-onclick reset-btn) reset)))
 
 (defn create-velocity-buttons [buttons]
-  (let [div (by-id "speed")]
+  (let [div (d/by-id "speed")]
     (map log buttons)))
 
 (defn init []
