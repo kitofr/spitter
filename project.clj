@@ -9,7 +9,8 @@
                  [org.clojure/clojurescript "0.0-1878"]
                  [compojure "1.1.5"]
                  [domina "1.0.2-SNAPSHOT"]
-                 [hiccup "1.0.0"]]
+                 [hiccup "1.0.0"]
+                 [clang "0.1.0-SNAPSHOT"]]
 
   :plugins [[lein-cljsbuild "0.3.3"]
             [lein-ring "0.8.7"]]
