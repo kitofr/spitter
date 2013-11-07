@@ -3,12 +3,28 @@
 <head>
   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 
-  <title>Spitter!</title>
+  <title>Spitter! (your daily speed reader)</title>
   <!--[if lt IE 9]>
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
+    <link href="js/components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" /> 
+    <link href="css/style.css" rel="stylesheet" />
 </head>
 <body>
+   <div class="container">
+     <div class="jumbotron">
+       <h1>Spitter!</h1>
+       <p>Read your twitter stream in blasing speed!</p>
+       <input type="textarea" name="stream" id="stream" class="form-control input-lg" value="" placeholder="Stream of text" />
+       <div class="btn-group">
+         <button id="play" class="btn btn-success">Play!</button>
+         <button id="stop" class="btn btn-inverse">Stop</button>
+         <button id="reset" class="btn btn-inverse">Reset</button>
+       </div>
+     </div>
+   </div>
   <script src="js/spitter.js"> </script>
+  <script src="js/components/jquery/jquery.min.js"> </script>
+  <script src="js/components/bootstrap/dist/js/bootstrap.min.js"> </script>
 </body>
 </html>
